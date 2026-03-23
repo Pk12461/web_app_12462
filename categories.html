@@ -91,6 +91,7 @@
                 <li>12 projects</li>
                 <li>Interview prep</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Web%20Development">Select course</a>
             </article>
             <article class="course-card" data-track="career">
               <span class="course-tag">Career</span>
@@ -101,6 +102,7 @@
                 <li>Dashboard reviews</li>
                 <li>Capstone included</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Data%20Analytics">Select course</a>
             </article>
             <article class="course-card" data-track="school">
               <span class="course-tag">School</span>
@@ -111,6 +113,7 @@
                 <li>Mock tests</li>
                 <li>Teacher feedback</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=STEM%20Excellence">Select course</a>
             </article>
             <article class="course-card" data-track="school">
               <span class="course-tag">School</span>
@@ -121,6 +124,7 @@
                 <li>Speed practice</li>
                 <li>Score analysis</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Exam%20Sprint">Select course</a>
             </article>
             <article class="course-card" data-track="creative">
               <span class="course-tag">Creative</span>
@@ -131,6 +135,7 @@
                 <li>Peer review</li>
                 <li>Portfolio support</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Graphic%20Design">Select course</a>
             </article>
             <article class="course-card" data-track="creative">
               <span class="course-tag">Creative</span>
@@ -141,8 +146,87 @@
                 <li>Mentor critique</li>
                 <li>Mini case studies</li>
               </ul>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=UI%20Fundamentals">Select course</a>
             </article>
           </div>
+        </section>
+
+        <section class="section" id="course-search-section">
+          <div class="section-heading">
+            <span class="eyebrow">Search and select</span>
+            <h2>Find course details in list format</h2>
+            <p>Use search to quickly find any course and select it for enrollment.</p>
+          </div>
+
+          <form class="course-search" id="course-search-form" role="search">
+            <input
+              id="course-search-input"
+              name="courseSearch"
+              type="search"
+              placeholder="Search by course name, track, skills, or details"
+              aria-label="Search courses"
+            />
+            <button class="btn btn-primary" type="submit">Search course</button>
+          </form>
+
+          <p class="muted" id="course-search-status" aria-live="polite"></p>
+
+          <ul class="course-detail-list" id="course-detail-list">
+            <li class="course-detail-item" data-search="web development career html css javascript react projects interview">
+              <div>
+                <h3>Web Development</h3>
+                <p class="muted">Track: Career</p>
+                <p>HTML, CSS, JavaScript, React, portfolio projects, and interview preparation.</p>
+                <p class="muted">Modules: 36 | Projects: 12 | Level: Beginner to Intermediate</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Web%20Development">Select course</a>
+            </li>
+            <li class="course-detail-item" data-search="data analytics career excel sql power bi dashboards storytelling capstone">
+              <div>
+                <h3>Data Analytics</h3>
+                <p class="muted">Track: Career</p>
+                <p>Excel, SQL, Power BI, dashboards, and business storytelling for practical analytics work.</p>
+                <p class="muted">Format: Case-study based | Includes: Industry mentorship and capstone</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Data%20Analytics">Select course</a>
+            </li>
+            <li class="course-detail-item" data-search="stem excellence school math science logic mock tests teacher feedback">
+              <div>
+                <h3>STEM Excellence</h3>
+                <p class="muted">Track: School</p>
+                <p>Math, science, and reasoning support with quizzes, problem sets, and revision maps.</p>
+                <p class="muted">Includes: Daily labs, mock tests, and teacher feedback</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=STEM%20Excellence">Select course</a>
+            </li>
+            <li class="course-detail-item" data-search="exam sprint school revision checkpoints strategy speed practice score analysis">
+              <div>
+                <h3>Exam Sprint</h3>
+                <p class="muted">Track: School</p>
+                <p>Short revision cycles, topic checkpoints, and strategy sessions before major exams.</p>
+                <p class="muted">Best for: Fast revision and score improvement</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Exam%20Sprint">Select course</a>
+            </li>
+            <li class="course-detail-item" data-search="graphic design creative typography branding ui portfolio peer review">
+              <div>
+                <h3>Graphic Design</h3>
+                <p class="muted">Track: Creative</p>
+                <p>Branding, typography, UI basics, and visual communication with practical assignments.</p>
+                <p class="muted">Includes: Creative briefs, peer reviews, and portfolio support</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=Graphic%20Design">Select course</a>
+            </li>
+            <li class="course-detail-item" data-search="ui fundamentals creative interface wireframes layout design thinking app screens">
+              <div>
+                <h3>UI Fundamentals</h3>
+                <p class="muted">Track: Creative</p>
+                <p>Interface design basics, wireframes, layout systems, and beginner-friendly design thinking.</p>
+                <p class="muted">Includes: App screen challenges, mentor critique, mini case studies</p>
+              </div>
+              <a class="btn btn-secondary" href="enrollment.html?plan=starter&course=UI%20Fundamentals">Select course</a>
+            </li>
+          </ul>
         </section>
 
         <section class="section">

@@ -44,7 +44,9 @@ a {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -566,9 +568,63 @@ input {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+.course-card .btn {
+  margin-top: 14px;
+}
+
 .course-card.is-hidden {
   opacity: 0.2;
   transform: scale(0.98);
+}
+
+.course-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.course-search input {
+  flex: 1 1 280px;
+  min-height: 48px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  padding: 0 18px;
+}
+
+.course-detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.course-detail-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.course-detail-item h3 {
+  margin: 0 0 8px;
+}
+
+.course-detail-item p {
+  margin: 0 0 8px;
+}
+
+.course-detail-item.is-hidden {
+  display: none;
 }
 
 .course-card ul,
@@ -688,6 +744,41 @@ input {
   background: rgba(255, 255, 255, 0.03);
   color: var(--text);
   padding: 0 18px;
+}
+
+.enrollment-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-grid label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  padding: 12px 14px;
+}
+
+.full-row {
+  grid-column: 1 / -1;
 }
 
 .form-message {
@@ -813,7 +904,8 @@ input {
   .timeline-grid,
   .stat-grid,
   .detail-grid,
-  .faq-grid {
+  .faq-grid,
+  .form-grid {
     grid-template-columns: 1fr;
   }
 

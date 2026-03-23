@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MentorLoop enrollment form for students who want to join Starter, Plus, or Mentor Pro plans."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>MentorLoop | Enrollment</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" id="top">
+        <a class="brand" href="./index.html" aria-label="MentorLoop home">
+          <span class="brand-mark">M</span>
+          <span>MentorLoop</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="./features.html">Features</a>
+          <a href="./categories.html">Categories</a>
+          <a href="./roadmap.html">Roadmap</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./pricing.html" aria-current="page">Pricing</a>
+        </nav>
+
+        <a class="btn btn-ghost desktop-only" href="./pricing.html">Back to pricing</a>
+      </header>
+
+      <main>
+        <section class="page-hero section">
+          <div>
+            <span class="eyebrow">Enrollment</span>
+            <h1>Share your details and join MentorLoop</h1>
+            <p class="lead">
+              Fill this form to reserve your seat. We save your details and show a confirmation instantly.
+            </p>
+          </div>
+
+          <aside class="page-hero-card" aria-label="Plan quick view">
+            <strong>Pricing quick view</strong>
+            <ul class="page-list">
+              <li>Starter: Free (INR 0 / USD 0)</li>
+              <li>Plus: INR 1,499/month | USD 19/month</li>
+              <li>Mentor Pro: INR 3,199/month | USD 39/month</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <span class="eyebrow">Student details</span>
+            <h2>Complete enrollment in one step</h2>
+          </div>
+
+          <form id="enrollment-form" class="enrollment-form" novalidate>
+            <div class="form-grid">
+              <div>
+                <label for="full-name">Full name</label>
+                <input id="full-name" name="fullName" type="text" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" required />
+              </div>
+              <div>
+                <label for="plan">Plan</label>
+                <select id="plan" name="plan" required>
+                  <option value="starter">Starter - Free (INR 0 / USD 0)</option>
+                  <option value="plus">Plus - INR 1,499/month | USD 19/month</option>
+                  <option value="mentor-pro">Mentor Pro - INR 3,199/month | USD 39/month</option>
+                </select>
+              </div>
+              <div>
+                <label for="currency">Preferred billing currency</label>
+                <select id="currency" name="currency" required>
+                  <option value="INR">INR</option>
+                  <option value="USD">USD</option>
+                </select>
+              </div>
+              <div>
+                <label for="course">Selected course</label>
+                <select id="course" name="course" required>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Data Analytics">Data Analytics</option>
+                  <option value="STEM Excellence">STEM Excellence</option>
+                  <option value="Exam Sprint">Exam Sprint</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="UI Fundamentals">UI Fundamentals</option>
+                </select>
+              </div>
+              <div>
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" required />
+              </div>
+              <div class="full-row">
+                <label for="goal">Learning goal</label>
+                <textarea id="goal" name="goal" rows="4" placeholder="Tell us what you want to achieve"></textarea>
+              </div>
+            </div>
+
+            <div class="section-actions">
+              <button class="btn btn-primary" type="submit">Submit enrollment</button>
+              <a class="btn btn-secondary" href="./pricing.html">Back to pricing</a>
+            </div>
+            <p class="form-message" id="enrollment-message" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <a class="brand footer-brand" href="./index.html">
+            <span class="brand-mark">M</span>
+            <span>MentorLoop</span>
+          </a>
+          <p>Flexible online learning for students who want structure, support, and measurable growth.</p>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <h3>Platform</h3>
+            <a href="./features.html">Features</a>
+            <a href="./categories.html">Courses</a>
+            <a href="./pricing.html">Pricing</a>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <a href="./roadmap.html">Learning roadmap</a>
+            <a href="./reviews.html">Reviews</a>
+            <a href="mailto:hello@mentorloop.example">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./main.js" defer></script>
+  </body>
+</html>
+
