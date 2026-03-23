@@ -1,6 +1,6 @@
 # MentorLoop
 
-A responsive student learning platform landing page built with vanilla HTML, CSS, and JavaScript.
+A responsive student learning platform website built with HTML, CSS, JavaScript, and a Node.js + PostgreSQL enrollment API.
 
 ## Live now
 
@@ -20,8 +20,79 @@ A responsive student learning platform landing page built with vanilla HTML, CSS
 
 ## Run locally
 
-1. Open `index.html` directly in your browser.
-2. Or, if you prefer a local server, serve the folder with any static file server available on your machine.
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create `.env` from `.env.example` and set `DATABASE_URL`.
+
+3. Start app + API server:
+
+```bash
+npm start
+```
+
+4. Open `http://localhost:3000`.
+
+If you only want static preview without backend, you can still open `index.html` directly.
+
+## PostgreSQL storage for enrollment form
+
+Enrollment form submissions are now sent to `POST /api/enroll` and stored in PostgreSQL table `mentorloop_leads`.
+
+Environment variables (`.env`):
+
+- `DATABASE_URL` (required)
+- `PG_SSL` (`true` or `false`)
+- `ADMIN_API_KEY` (required for lead queries)
+- `PORT` (default `3000`)
+
+## Cloudflare Pages deploy (static UI)
+
+Use Pages only for frontend files from `dist`:
+
+```bash
+npm run build:pages
+npm run deploy:pages
+```
+
+Wrangler is configured in `wrangler.toml` with:
+
+- `assets.directory = "./dist"`
+
+This avoids uploading the whole repository and prevents large asset failures.
+
+### Point frontend to external API
+
+When frontend is on Pages and backend is hosted elsewhere, set API base URL in `enrollment.html`:
+
+```html
+<meta name="mentorloop-api-base" content="https://your-api-domain.com" />
+```
+
+If empty, frontend uses same-origin requests.
+
+Schema file:
+
+- `db-schema.sql`
+
+The server also auto-creates this table at startup.
+
+### Test enrollment API
+
+```bash
+npm run test:api
+```
+
+### Query saved leads
+
+Use admin key header:
+
+```bash
+curl -H "x-admin-key: YOUR_ADMIN_API_KEY" "http://localhost:3000/api/leads?limit=25"
+```
 
 ## Make it online from this PC
 
@@ -51,6 +122,10 @@ What these scripts do:
 - `index.html` — page structure and content
 - `styles.css` — responsive styling
 - `main.js` — interactivity
+- `server.mjs` — Express API + PostgreSQL integration
+- `db-schema.sql` — enrollment database schema
+- `.env.example` — environment variable template
+- `test-enroll.mjs` — tiny API test runner
 - `package.json` — optional project metadata
 - `go-online.ps1` — starts a temporary public URL for the site
 - `stop-online.ps1` — stops the local server and tunnel

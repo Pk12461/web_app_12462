@@ -17,6 +17,23 @@ const courseSearchInput = document.querySelector('#course-search-input');
 const courseSearchStatus = document.querySelector('#course-search-status');
 const courseDetailItems = document.querySelectorAll('.course-detail-item');
 
+const resolveApiBaseUrl = () => {
+  const globalValue = typeof window !== 'undefined' ? window.MENTORLOOP_API_BASE_URL : '';
+  if (typeof globalValue === 'string' && globalValue.trim()) {
+    return globalValue.trim().replace(/\/$/, '');
+  }
+
+  const metaTag = document.querySelector('meta[name="mentorloop-api-base"]');
+  const metaValue = metaTag ? metaTag.getAttribute('content') : '';
+  if (metaValue && metaValue.trim()) {
+    return metaValue.trim().replace(/\/$/, '');
+  }
+
+  return '';
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
+
 if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
     const isOpen = siteNav.classList.toggle('is-open');
@@ -143,7 +160,7 @@ if (enrollmentForm && enrollmentMessage) {
     enrollmentCourse.value = requestedCourse;
   }
 
-  enrollmentForm.addEventListener('submit', (event) => {
+  enrollmentForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const data = new FormData(enrollmentForm);
 
@@ -162,7 +179,6 @@ if (enrollmentForm && enrollmentMessage) {
     }
 
     const lead = {
-      id: `ML-${Date.now()}`,
       fullName,
       email,
       phone,
@@ -172,14 +188,46 @@ if (enrollmentForm && enrollmentMessage) {
       city,
       goal,
       source: 'enrollment-page',
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/enroll`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(lead),
+      });
+
+      const body = await response.json();
+      if (!response.ok) {
+        throw new Error(body.error || 'Failed to submit enrollment');
+      }
+
+      enrollmentMessage.textContent = `Thanks ${fullName}! Enrollment saved. Reference: ${body.reference}.`;
+      enrollmentForm.reset();
+
+      if (enrollmentPlan && validPlans.has(requestedPlan)) {
+        enrollmentPlan.value = requestedPlan;
+      }
+
+      if (enrollmentCourse && validCourses.has(requestedCourse)) {
+        enrollmentCourse.value = requestedCourse;
+      }
+      return;
+    } catch (error) {
+      enrollmentMessage.textContent = `Could not save to database right now (${error.message}). Saved in browser as backup.`;
+    }
+
+    const fallbackLead = {
+      ...lead,
+      id: `ML-${Date.now()}`,
       createdAt: new Date().toISOString(),
     };
 
     const savedLeads = JSON.parse(localStorage.getItem('mentorloopLeads') || '[]');
-    savedLeads.push(lead);
+    savedLeads.push(fallbackLead);
     localStorage.setItem('mentorloopLeads', JSON.stringify(savedLeads));
-
-    enrollmentMessage.textContent = `Thanks ${fullName}! Your enrollment request is saved. Reference: ${lead.id}`;
     enrollmentForm.reset();
 
     if (enrollmentPlan && validPlans.has(requestedPlan)) {

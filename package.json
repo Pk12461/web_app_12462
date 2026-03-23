@@ -4,7 +4,16 @@
   "version": "1.0.0",
   "description": "Static website for the MentorLoop student learning platform",
   "scripts": {
-    "build:pages": "node build-pages.mjs"
+    "build:pages": "node build-pages.mjs",
+    "deploy:pages": "wrangler pages deploy dist --project-name mentorloop --branch main",
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "test:api": "node test-enroll.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "pg": "^8.16.3"
   }
 }
 

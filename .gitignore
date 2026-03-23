@@ -6,3 +6,4 @@ dist/
 .idea/
 pages.txt
 verification.txt
+.env
