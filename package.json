@@ -2,6 +2,9 @@
   "name": "mentorloop",
   "private": true,
   "version": "1.0.0",
-  "description": "Static website for the MentorLoop student learning platform"
+  "description": "Static website for the MentorLoop student learning platform",
+  "scripts": {
+    "build:pages": "node build-pages.mjs"
+  }
 }
 
